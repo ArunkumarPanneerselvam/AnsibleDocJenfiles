@@ -1,0 +1,4 @@
+- name: Dem for use of all custom modules
+  hosts: all
+  roles: 
+   - nginx

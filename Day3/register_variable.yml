@@ -1,0 +1,21 @@
+- name: Dem use of register variable
+  hosts: all
+  tasks: 
+   - name: list all directory
+     shell: ls -l
+     register: myoutput_list
+
+   - name: list all filesystem
+     shell: df -h
+     register: myoutput_fs
+   
+   - name: Print the output of list var
+     debug: var=myoutput_list
+   
+   - name: Print the output of filesystems
+     debug: var=myoutput_fs
+
+     #Can also be written in below format, but it depends upon the format of the output
+     #- name: Print the output
+     #debug: msg="Output of list directory - {{myoutput_list}}\n Output of Filesystem - {{myoutput_fs}}"
+

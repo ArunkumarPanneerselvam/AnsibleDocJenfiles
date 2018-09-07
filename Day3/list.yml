@@ -1,0 +1,15 @@
+- name: Dem use of list var and its navigation as a loop
+  hosts: localhost
+  gather_facts: false
+  vars: 
+   - softwares_tools: 
+     - tree
+     - vim
+     - default-jdk
+     - maven
+
+  tasks: 
+   - name: Print all the list of software tools
+     with_list: "{{softwares_tools}}"
+     debug: msg = "{{item}}"
+     #with_list: "{{softwares_tools}}"

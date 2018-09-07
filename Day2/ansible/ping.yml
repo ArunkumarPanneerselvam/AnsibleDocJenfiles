@@ -1,0 +1,18 @@
+- name: This play demonstrates the use of ping module of dev hosts
+  hosts: dev
+  gather_facts: false
+  tasks: 
+   - name: Ping the docker dev container
+     ping: 
+
+- name: This play demonstrates the use of ping module of qa hosts
+  hosts: qa
+  tasks: 
+   - name: Ping the docker qa container
+     ping:
+
+- name: This play demonstrates the use of ping module of prod hosts
+  hosts: prod
+  tasks: 
+   - name: Ping the docker prod container
+     ping:

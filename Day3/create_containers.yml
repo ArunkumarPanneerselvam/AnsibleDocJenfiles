@@ -1,0 +1,24 @@
+- name: Dem provisioning docker containers from Ansible
+  hosts: localhost
+  tasks: 
+   - name: Create Ubuntu Container
+     docker_container: 
+       name: "ubuntu{{item}}"
+       hostname: "ubuntu{{item}}"
+       image: "verizon/ansible-ubuntu"
+       ports: 
+         - "200{{item}}:22"
+         - "800{{item}}:80"
+       state: started 
+     with_sequence: start=0 end=2
+
+   - name: Create CentOS Container
+     docker_container: 
+       name: "centos{{item}}"
+       hostname: "centos{{item}}"
+       image: "verizon/ansible-centos"
+       ports: 
+         - "300{{item}}:22"
+         - "900{{item}}:80"
+       state: started 
+     with_sequence: start=0 end=2

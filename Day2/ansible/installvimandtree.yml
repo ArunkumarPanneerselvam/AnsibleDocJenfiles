@@ -1,0 +1,9 @@
+- name: Demo for use of apt module
+  hosts: all
+  become: yes
+  tasks: 
+   - name: Install vim editor
+     apt: name=vim state=latest update_cache=yes
+
+   - name: Install tree utility
+     apt: name=tree state=present update_cache=yes

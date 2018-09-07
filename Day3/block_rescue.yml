@@ -1,0 +1,15 @@
+- name: Dem use of block and rescue variable
+  hosts: all
+  tasks: 
+   - name: This is a block of code
+     block: 
+      - name: list all directory
+        shell: 88ls -l
+        register: myoutput_list
+     
+     rescue: 
+      - name: Print error message 
+        debug: msg="**** List all directory failed - Not proceeding further!!"
+
+     always: 
+      - debug: var=myoutput_list

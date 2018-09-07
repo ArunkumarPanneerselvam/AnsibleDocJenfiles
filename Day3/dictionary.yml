@@ -1,0 +1,9 @@
+- name: Dem use of dictionary and looping dictionary
+  hosts: localhost
+  vars_files: 
+   - contact_file
+  tasks: 
+   - name: Print all contacts
+     debug: msg="Mobile number of {{item.value.name}} is {{item.value.Mobile}}"
+     with_dict: "{{contacts}}"
+
